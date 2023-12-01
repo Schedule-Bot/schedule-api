@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "schedule-api"
+version = "0.1.0"
+description = ""
+authors = ["Artem Pelevin artempelevin@list.ru"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+
+[tool.poetry.dependencies]
+python = "~3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+isort = "^5.12.0"
+mypy = "^1.7.1"
+pylint = "^3.0.2"
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.pylint]
+max-line-length = 120
+init-hook = 'import sys; sys.path.append("src/")'    # Make `src/` the root directory
+# C0114 - Disable warning for the module docstring
+# C0115 - Disable warning for the class docstring
+# C0116 - Disable warning for the function docstring
+disable = "C0114, C0115, C0116"
+
+
+[tool.mypy]
+ignore_missing_imports = true
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
