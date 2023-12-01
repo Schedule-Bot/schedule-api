@@ -23,3 +23,8 @@ format:
 lint:
 	poetry run mypy $(PROJECT_DIR)/src/
 	poetry run pylint --recursive=y $(PROJECT_DIR)/src/ --fail-under=9.9
+
+
+.PHONY: start-dev-server
+start-dev-server:
+	PYTHONPATH=$(PROJECT_DIR)/src/ uvicorn src.app:app --host 127.0.0.1 --port 8000 --reload
