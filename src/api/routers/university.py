@@ -26,5 +26,5 @@ async def get_university(university_id: int) -> Response[UniversityScheme]:
             return write_response(university)
     raise HTTPException(
         status_code=404,
-        detail=f"The university with the ID={university_id} was not found",
+        detail=f"Университет с ID={university_id} не найден",
     )
