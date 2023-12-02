@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from api.schemas.university import UniversityScheme
+from api.utils import Response, ResponseList, write_response
 
 router = APIRouter(tags=[""])
 
@@ -14,15 +15,15 @@ ALL_UNIVERSITIES = [  # TODO(issue-1): Доставать университет
 
 
 @router.get("/api/v1/universities")
-async def get_universities() -> list[UniversityScheme]:
-    return ALL_UNIVERSITIES
+async def get_universities() -> ResponseList[UniversityScheme]:
+    return write_response(ALL_UNIVERSITIES)
 
 
 @router.get("/api/v1/universities/{university_id}")
-async def get_university(university_id: int) -> UniversityScheme:
+async def get_university(university_id: int) -> Response[UniversityScheme]:
     for university in ALL_UNIVERSITIES:
         if university.id == university_id:
-            return university
+            return write_response(university)
     raise HTTPException(
         status_code=404,
         detail=f"The university with the ID={university_id} was not found",
