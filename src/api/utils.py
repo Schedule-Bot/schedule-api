@@ -1,11 +1,11 @@
-from typing import Generic, TypeVar
+# from typing import Generic, TypeVar
 
 from pydantic import BaseModel, Field
 
-PydanticModel = TypeVar("PydanticModel", bound=BaseModel)
+# PydanticModel = TypeVar("PydanticModel", bound=BaseModel)
 
 
-class Response(BaseModel, Generic[PydanticModel]):
+class Response[PydanticModel:BaseModel](BaseModel):
     data: PydanticModel | None = None
     status_code: int = Field(default=200, description="HTTP статус код")
     error: bool = Field(
@@ -18,7 +18,7 @@ class Response(BaseModel, Generic[PydanticModel]):
     )
 
 
-class ResponseList(Response, Generic[PydanticModel]):
+class ResponseList[PydanticModel:BaseModel](Response):
     data: list[PydanticModel]
 
 

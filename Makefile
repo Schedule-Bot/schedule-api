@@ -4,7 +4,7 @@ PROJECT_DIR ?= $(shell git rev-parse --show-toplevel)
 
 .PHONY: install-dev
 install-dev:
-	poetry env use 3.11
+	poetry env use 3.12
 	poetry install --with dev
 
 
