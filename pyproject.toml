@@ -2,7 +2,7 @@
 name = "schedule-api"
 version = "0.1.0"
 description = ""
-authors = ["Artem Pelevin artempelevin@list.ru"]
+authors = ["Artem Pelevin <artempelevin@list.ru>"]
 readme = "README.md"
 packages = [{include = "src"}]
 
